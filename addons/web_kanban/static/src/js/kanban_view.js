@@ -123,19 +123,28 @@ var KanbanView = View.extend({
         var self = this;
         var group_by_field = group_by[0] || this.default_group_by;
         var field = this.fields_view.fields[group_by_field];
-        var grouped_by_m2o = field && (field.type === 'many2one');
-
-        var options = {
-            search_domain: domain,
-            search_context: context,
-            group_by_field: group_by_field,
-            grouped: group_by.length || this.default_group_by,
-            grouped_by_m2o: grouped_by_m2o,
-            relation: (grouped_by_m2o ? field.relation : undefined),
-        };
-
+        var options = {};
+        var fields_def;
+        if (field === undefined) {
+            fields_def = data_manager.load_fields(this.dataset).then(function (fields) {
+                self.fields = fields;
+                field = self.fields[group_by_field];
+            });
+        }
+        var load_def = $.when(fields_def).then(function() {
+            var grouped_by_m2o = field && (field.type === 'many2one');
+            options = _.extend(options, {
+                search_domain: domain,
+                search_context: context,
+                group_by_field: group_by_field,
+                grouped: group_by.length || self.default_group_by,
+                grouped_by_m2o: grouped_by_m2o,
+                relation: (grouped_by_m2o ? field.relation : undefined),
+            });
+            return options.grouped ? self.load_groups(options) : self.load_records();
+        });
         return this.search_orderer
-            .add(options.grouped ? this.load_groups(options) : this.load_records())
+            .add(load_def)
             .then(function (data) {
                 _.extend(self, options);
                 if (options.grouped) {
@@ -183,14 +192,7 @@ var KanbanView = View.extend({
         var group_by_field = options.group_by_field;
         var fields_keys = _.uniq(this.fields_keys.concat(group_by_field));
 
-        var fields_def;
-        if (this.fields_view.fields[group_by_field] === undefined) {
-            fields_def = data_manager.load_fields(this.dataset).then(function (fields) {
-                self.fields = fields;
-            })
-        }
-
-        var load_groups_def = new Model(this.model, options.search_context, options.search_domain)
+        return new Model(this.model, options.search_context, options.search_domain)
         .query(fields_keys)
         .group_by([group_by_field])
         .then(function (groups) {
@@ -293,7 +295,6 @@ var KanbanView = View.extend({
                 };
             });
         });
-        return $.when(load_groups_def, fields_def);
     },
 
     is_action_enabled: function(action) {
@@ -710,24 +711,19 @@ var KanbanView = View.extend({
         var context = {};
         context['default_' + this.group_by_field] = column.id;
         var name = event.data.value;
-        this.dataset.name_create(name, context).then(function on_success (data) {
+        this.dataset.name_create(name, context).done(function(data) {
             add_record(data[0]);
-        }, function on_fail (event) {
+        }).fail(function(error, event) {
             event.preventDefault();
-            var popup = new form_common.SelectCreatePopup(this);
-            popup.select_element(
-                self.model,
-                {
-                    title: _t("Create: "),
-                    initial_view: "form",
-                    disable_multiple_selection: true
-                },
-                [],
-                {"default_name": name}
-            );
-            popup.on("elements_selected", self, function(element_ids) {
-                add_record(element_ids[0]);
-            });
+            var dialog = new form_common.FormViewDialog(self, {
+                res_model: self.model,
+                context: _.extend({"default_name": name}, context),
+                title: _t("Create"),
+                disable_multiple_selection: true,
+                on_selected: function(element_ids) {
+                    add_record(element_ids[0]);
+                }
+            }).open();
         });
 
         function add_record(id) {

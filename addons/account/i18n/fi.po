@@ -24,13 +24,14 @@
 # Atte Isopuro <atte.isopuro@web-veistamo.fi>, 2016
 # Melina Mantyla <melina.mantyla@web-veistamo.fi>, 2016
 # Jussi Lehto <jussi@gulfeo.com>, 2016
+# artol <arto.leskinen@tek.fi>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-14 15:53+0000\n"
-"PO-Revision-Date: 2016-11-14 15:53+0000\n"
-"Last-Translator: Jussi Lehto <jussi@gulfeo.com>, 2016\n"
+"POT-Creation-Date: 2017-02-14 10:20+0000\n"
+"PO-Revision-Date: 2017-02-14 10:20+0000\n"
+"Last-Translator: artol <arto.leskinen@tek.fi>, 2017\n"
 "Language-Team: Finnish (https://www.transifex.com/odoo/teams/41243/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1487,7 +1488,7 @@ msgstr "Laskutuksen Dashboard"
 #: model:ir.model.fields,field_description:account.field_account_invoice_date
 #: model:ir.model.fields,field_description:account.field_account_invoice_refund_date
 msgid "Accounting Date"
-msgstr ""
+msgstr "Kirjauspäivä"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_move_line_form
@@ -1797,7 +1798,7 @@ msgstr "Sallii laskujen asetuksen proforma-tilaan"
 #. module: account
 #: model:ir.model.fields,help:account.field_account_config_settings_group_analytic_accounting
 msgid "Allows you to use the analytic accounting."
-msgstr "Sallii analyyttisen tilien käytön."
+msgstr "Sallii kustannuspaikkojen käytön."
 
 #. module: account
 #. openerp-web
@@ -1817,6 +1818,7 @@ msgstr "Sallii analyyttisen tilien käytön."
 #: model:ir.model.fields,field_description:account.field_cash_box_in_amount
 #: model:ir.model.fields,field_description:account.field_cash_box_out_amount
 #: model:ir.model.fields,field_description:account.field_tax_adjustments_wizard_amount
+#: model:ir.ui.view,arch_db:account.report_invoice_document
 #: model:ir.ui.view,arch_db:account.view_account_payment_tree
 #: model:ir.ui.view,arch_db:account.view_account_reconcile_model_form
 #: model:ir.ui.view,arch_db:account.view_account_supplier_payment_tree
@@ -1824,6 +1826,11 @@ msgstr "Sallii analyyttisen tilien käytön."
 #, python-format
 msgid "Amount"
 msgstr "Määrä"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_analytic_line_analytic_amount_currency
+msgid "Amount Currency"
+msgstr ""
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_residual
@@ -1926,7 +1933,7 @@ msgstr "Analyyttinen"
 #: code:addons/account/static/src/js/account_reconciliation_widgets.js:152
 #, python-format
 msgid "Analytic Acc."
-msgstr "Analyyttinen tili"
+msgstr "Kustannuspaikka"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_line_account_analytic_id
@@ -1949,12 +1956,12 @@ msgstr "Analyyttinen kirjanpito"
 #: model:ir.ui.menu,name:account.menu_action_analytic_account_tree2
 #: model:ir.ui.view,arch_db:account.partner_view_button_contracts_count
 msgid "Analytic Accounts"
-msgstr "Analyyttiset tilit"
+msgstr "Kustannuspaikat"
 
 #. module: account
 #: model:ir.ui.menu,name:account.account_analytic_tag_menu
 msgid "Analytic Accounts Tags"
-msgstr "Analyyttisten tilien tunnisteet"
+msgstr "Kustannuspaikkojen tunnisteet"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_tax_template_analytic
@@ -1987,7 +1994,7 @@ msgstr "Analyyttiset tunnisteet"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_tax_account_analytic_id
 msgid "Analytic account"
-msgstr "Analyyttinen tili"
+msgstr "Kustannuspaikka"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_config_settings_group_analytic_accounting
@@ -2873,10 +2880,17 @@ msgstr "Sulje"
 
 #. module: account
 #. openerp-web
-#: code:addons/account/static/src/xml/account_reconciliation.xml:227
+#: code:addons/account/static/src/xml/account_reconciliation.xml:229
 #, python-format
 msgid "Close the statement"
 msgstr "Sulje tiliote"
+
+#. module: account
+#. openerp-web
+#: code:addons/account/static/src/xml/account_reconciliation.xml:228
+#, python-format
+msgid "Close the statements"
+msgstr ""
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_date_done
@@ -4091,11 +4105,6 @@ msgid "Email composition wizard"
 msgstr "Sähköpostin ohjattu koostaminen"
 
 #. module: account
-#: model:ir.model,name:account.model_survey_mail_compose_message
-msgid "Email composition wizard for Survey"
-msgstr "Sähköpostin ohjattu koostaminen kyselytutkimukselle"
-
-#. module: account
 #: model:ir.model.fields,field_description:account.field_accounting_report_enable_filter
 msgid "Enable Comparison"
 msgstr "Salli vertailu"
@@ -4232,6 +4241,9 @@ msgid ""
 "Finance</strong> or the <strong>European Central Bank</strong>. You can "
 "activate this feature in the bottom of the"
 msgstr ""
+"Valuuttakurssit voidaan päivittää automaattisesti kerran vuorokaudessa "
+"<strong>Yahoo Finance</strong>- tai <strong>Euroopan Keskuspankin</strong> "
+"-palvelusta. Voit aktivoida tämän toiminnon ala"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_company_expects_chart_of_accounts
@@ -4864,8 +4876,8 @@ msgid ""
 "If set, the amount computed by this tax will be assigned to the same "
 "analytic account as the invoice line (if any)"
 msgstr ""
-"Jos valittu, veron määrä merkitään samalle tilille kuin laskunrivi (jos "
-"määritelty laskuriville)."
+"Jos valittu, veron määrä merkitään samalle kustannuspaikalle kuin laskurivi "
+"(jos määritelty laskuriville)."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_payment_term_active
@@ -5034,7 +5046,7 @@ msgstr ""
 #. module: account
 #: model:ir.ui.view,arch_db:account.account_planner
 msgid "In Odoo,"
-msgstr ""
+msgstr "Odoossa"
 
 #. module: account
 #: code:addons/account/models/account_bank_statement.py:406
@@ -5304,22 +5316,20 @@ msgstr ""
 #: code:addons/account/models/account_invoice.py:587
 #, python-format
 msgid ""
-"Invoice must be in draft,Pro-forma or open state in order to be cancelled."
+"Invoice must be in draft, Pro-forma or open state in order to be cancelled."
 msgstr ""
-"Laskun tulee olla joko ehdotus, Pro-forma tai avoin -tilassa jotta se "
-"voidaan peruuttaa."
 
 #. module: account
 #: code:addons/account/models/account_invoice.py:581
 #, python-format
-msgid "Invoice must be paid in order to set it to register payemnt."
-msgstr "Laskun pitää olla maksettu jotta se voidaan kirjata maksetuksi."
+msgid "Invoice must be paid in order to set it to register payment."
+msgstr ""
 
 #. module: account
 #: code:addons/account/models/account_invoice.py:573
 #, python-format
-msgid "Invoice must be validated in order to set it to register payemnt."
-msgstr "Lasku pitää validoida jotta se voidaan kirjata maksetuksi."
+msgid "Invoice must be validated in order to set it to register payment."
+msgstr ""
 
 #. module: account
 #: model:mail.message.subtype,description:account.mt_invoice_paid
@@ -6137,6 +6147,8 @@ msgid "Managing bank fees"
 msgstr "Pankkikulujen hallinta"
 
 #. module: account
+#: model:account.payment.method,name:account.account_payment_method_manual_in
+#: model:account.payment.method,name:account.account_payment_method_manual_out
 #: model:ir.model.fields,field_description:account.field_account_invoice_tax_manual
 msgid "Manual"
 msgstr "Manuaalinen"
@@ -6744,7 +6756,7 @@ msgstr "Avoin"
 #: code:addons/account/static/src/xml/account_payment.xml:82
 #, python-format
 msgid "Open Payment"
-msgstr ""
+msgstr "Avoin maksu"
 
 #. module: account
 #. openerp-web
@@ -6758,12 +6770,12 @@ msgstr "Avoin saldo"
 #. module: account
 #: model:ir.model.fields,help:account.field_account_cashbox_line_number
 msgid "Opening Unit Numbers"
-msgstr ""
+msgstr "Määrä alussa"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_account_reconcile_model_form
 msgid "Operation Templates"
-msgstr ""
+msgstr "Toimintomallit"
 
 #. module: account
 #: code:addons/account/models/account_bank_statement.py:1000
@@ -6808,7 +6820,7 @@ msgstr "Lisätiedot"
 #: model:ir.model.fields,help:account.field_account_tax_tag_ids
 #: model:ir.model.fields,help:account.field_account_tax_template_tag_ids
 msgid "Optional tags you may want to assign for custom reporting"
-msgstr ""
+msgstr "Vapaaehtoiset tunnisteet raportteihin"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_payment_term_line_option
@@ -7309,7 +7321,7 @@ msgstr ""
 #. module: account
 #: model:ir.model,name:account.model_web_planner
 msgid "Planner"
-msgstr ""
+msgstr "Suunnittelija"
 
 #. module: account
 #: code:addons/account/wizard/pos_box.py:27
@@ -7380,12 +7392,12 @@ msgstr "Lähetä"
 #. module: account
 #: model:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
 msgid "Post All Entries"
-msgstr ""
+msgstr "Merkitse kaikki kirjaukset"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_account_payment_invoice_form
 msgid "Post Difference In"
-msgstr ""
+msgstr "Kirjaa erot:"
 
 #. module: account
 #: model:ir.actions.act_window,name:account.action_validate_account_move
@@ -7911,12 +7923,12 @@ msgstr "Tavallinen"
 #. module: account
 #: model:ir.model.fields,help:account.field_account_invoice_residual_company_signed
 msgid "Remaining amount due in the currency of the company."
-msgstr ""
+msgstr "Jäljelläoleva erääntynyt summa yrityksen valuutassa."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_invoice_residual_signed
 msgid "Remaining amount due in the currency of the invoice."
-msgstr ""
+msgstr "Jäjelläoleva eräntynyt summa laskun valuutassa."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_invoice_residual
@@ -8183,7 +8195,7 @@ msgstr "Toisen määrän tyyppi"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_reconcile_model_second_analytic_account_id
 msgid "Second Analytic Account"
-msgstr "Toinen analyyttinen tili"
+msgstr "Toinen kustannuspaikka"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_reconcile_model_second_journal_id
@@ -8945,6 +8957,7 @@ msgstr ""
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_analytic_line_amount_currency
+#: model:ir.model.fields,help:account.field_account_analytic_line_analytic_amount_currency
 msgid ""
 "The amount expressed in the related account currency if not equal to the "
 "company one."
@@ -8953,7 +8966,7 @@ msgstr ""
 "valuutta."
 
 #. module: account
-#: code:addons/account/models/account_move.py:426
+#: code:addons/account/models/account_move.py:436
 #, python-format
 msgid ""
 "The amount expressed in the secondary currency must be positive when account"
@@ -9424,6 +9437,15 @@ msgid ""
 msgstr ""
 
 #. module: account
+#. openerp-web
+#: code:addons/account/static/src/xml/account_reconciliation.xml:273
+#, python-format
+msgid ""
+"This move's amount is higher than the transaction's amount. Click to "
+"register a partial payment and keep the payment balance open."
+msgstr ""
+
+#. module: account
 #: model:ir.model.fields,help:account.field_accounting_report_debit_credit
 msgid ""
 "This option allows you to get more details about the way your balances are "
@@ -9742,6 +9764,13 @@ msgstr "Tyyppi"
 #: code:addons/account/models/chart_template.py:819
 #, python-format
 msgid "Undistributed Profits/Losses"
+msgstr ""
+
+#. module: account
+#. openerp-web
+#: code:addons/account/static/src/xml/account_reconciliation.xml:278
+#, python-format
+msgid "Undo the partial reconciliation."
 msgstr ""
 
 #. module: account

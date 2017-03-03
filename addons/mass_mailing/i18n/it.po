@@ -139,7 +139,7 @@ msgstr ""
 #. module: mass_mailing
 #: model:ir.ui.view,arch_db:mass_mailing.snippet_options
 msgid "<i class=\"fa fa-eyedropper\"/>Background Color"
-msgstr ""
+msgstr "<i class=\"fa fa-eyedropper\"/>Colore di Background"
 
 #. module: mass_mailing
 #: model:ir.ui.view,arch_db:mass_mailing.email_designer_snippets
@@ -1082,7 +1082,7 @@ msgstr "Mailings"
 #. module: mass_mailing
 #: model:ir.model,name:mass_mailing.model_maintenance_request
 msgid "Maintenance Requests"
-msgstr ""
+msgstr "Richieste di Manutenzione"
 
 #. module: mass_mailing
 #: model:res.groups,name:mass_mailing.group_mass_mailing_campaign

@@ -291,9 +291,8 @@ def load_modules(db, force_demo=False, status=None, update_module=False):
         # STEP 2: Mark other modules to be loaded/updated
         if update_module:
             Module = env['ir.module.module']
-            if ('base' in tools.config['init']) or ('base' in tools.config['update']):
-                _logger.info('updating modules list')
-                Module.update_list()
+            _logger.info('updating modules list')
+            Module.update_list()
 
             _check_module_names(cr, itertools.chain(tools.config['init'].keys(), tools.config['update'].keys()))
 
@@ -364,7 +363,7 @@ def load_modules(db, force_demo=False, status=None, update_module=False):
             for (model,) in cr.fetchall():
                 if model in registry:
                     env[model]._check_removed_columns(log=True)
-                else:
+                elif _logger.isEnabledFor(logging.INFO):    # more an info that a warning...
                     _logger.warning("Model %s is declared but cannot be loaded! (Perhaps a module was partially removed or renamed)", model)
 
             # Cleanup orphan records
@@ -402,8 +401,10 @@ def load_modules(db, force_demo=False, status=None, update_module=False):
         if update_module:
             View = env['ir.ui.view']
             for model in registry:
-                if not View._validate_custom_views(model):
-                    _logger.warning('invalid custom view(s) for model %s', model)
+                try:
+                    View._validate_custom_views(model)
+                except Exception as e:
+                    _logger.warning('invalid custom view(s) for model %s: %s', model, tools.ustr(e))
 
         if report.failures:
             _logger.error('At least one test failed when loading the modules.')

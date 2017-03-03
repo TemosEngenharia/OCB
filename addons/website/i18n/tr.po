@@ -703,7 +703,7 @@ msgstr ""
 #. module: website
 #: model:ir.ui.view,arch_db:website.website_planner
 msgid "<strong>Send mass mails</strong>"
-msgstr ""
+msgstr "<strong>Toplu mail gönder</strong>"
 
 #. module: website
 #: model:ir.ui.view,arch_db:website.website_planner
@@ -715,7 +715,7 @@ msgstr ""
 #. module: website
 #: model:ir.ui.view,arch_db:website.website_planner
 msgid "<strong>Subscriptions</strong>"
-msgstr "<strong>Üyelikler</strong>"
+msgstr "<strong>Abonelikler</strong>"
 
 #. module: website
 #: model:ir.ui.view,arch_db:website.website_planner
@@ -2947,7 +2947,7 @@ msgstr ""
 #. module: website
 #: model:ir.ui.view,arch_db:website.template_partner_comment
 msgid "Send <span class=\"fa fa-long-arrow-right\"/>"
-msgstr ""
+msgstr "Gönder <span class=\"fa fa-long-arrow-right\"/>"
 
 #. module: website
 #: model:ir.ui.view,arch_db:website.template_partner_comment
@@ -3910,7 +3910,7 @@ msgstr ""
 #: model:ir.actions.act_window,help:website.action_module_theme
 #: model:ir.actions.act_window,help:website.action_module_website
 msgid "You should try other search criteria."
-msgstr ""
+msgstr "Başka bir arama kriteri denemelisiniz."
 
 #. module: website
 #: model:ir.ui.view,arch_db:website.s_banner

@@ -346,7 +346,7 @@ msgid ""
 "<b>Invite coworkers</b> via email.<br/><i>Enter one email per line.</i>"
 msgstr ""
 "<b>Nodig collega's uit</b> via email.<br/><i>Voeg één e-mail toe per "
-"lijn.</i>"
+"regel.</i>"
 
 #. module: project
 #. openerp-web
@@ -1654,7 +1654,7 @@ msgstr "Maak tenminste 3 taken aan"
 #. module: project
 #: model:ir.ui.view,arch_db:project.project_planner
 msgid "Create bills automatically based on Time &amp; Material."
-msgstr "Maak automatisch rekeningen aan gebaseerd op Tijd &amp; Materiaal."
+msgstr "Maak automatisch facturen aan gebaseerd op Tijd &amp; Materiaal."
 
 #. module: project
 #: model:ir.model.fields,field_description:project.field_project_task_create_date
@@ -2217,7 +2217,7 @@ msgstr "Veel succes!"
 msgid ""
 "Green: the Task is ready for next stage (the job for this stage is complete)"
 msgstr ""
-"Groen: de taak is klaar voor de volgende fase (de job voor deze fase is "
+"Groen: de taak is klaar voor de volgende fase (de taak voor deze fase is "
 "voltooid)"
 
 #. module: project
@@ -2656,7 +2656,7 @@ msgstr "Laag"
 #: model:ir.ui.view,arch_db:project.view_project_project_filter
 #: model:res.groups,name:project.group_project_manager
 msgid "Manager"
-msgstr "Beheerder"
+msgstr "Manager"
 
 #. module: project
 #: model:ir.ui.view,arch_db:project.project_planner
