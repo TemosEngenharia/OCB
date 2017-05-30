@@ -2442,9 +2442,9 @@ msgstr ""
 "===========================================\n"
 "\n"
 "De productie module staat u toe om voorraad te plannen, ordenen en het produceren van rauwe materialen en componenten te doen.\n"
-"Het handelt de consumptie en productie van producten af naar gelang de materiaallijst, de benodigde materialen en de benodigde handelingen op machines, tools of menselijke bronnen volgens routings.\n"
+"Het handelt de consumptie en productie van producten af naar gelang de stuklijst, de benodigde materialen en de benodigde handelingen op machines, tools of menselijke bronnen volgens routings.\n"
 "\n"
-"Het ondersteunt volledige integratie en planning van voorraadproducten, verbruiksartikelen of diensten. Diensten zijn volledig geïntegreerd in de rest van de software. U kan bijvoorbeeld een sub-contract dienst opzetten in een materiaallijst om automatisch aan te kopen bij het bestellen van de samenvatting voor de productie.\n"
+"Het ondersteunt volledige integratie en planning van voorraadproducten, verbruiksartikelen of diensten. Diensten zijn volledig geïntegreerd in de rest van de software. U kan bijvoorbeeld een sub-contract dienst opzetten in een stuklijst om automatisch aan te kopen bij het bestellen van de samenvatting voor de productie.\n"
 "\n"
 "Belangrijkste kenmerken:\n"
 "------------\n"
@@ -3254,8 +3254,6 @@ msgid ""
 "(technically: Server Actions) to be triggered for each incoming mail.\n"
 "    "
 msgstr ""
-"\n"
-"*** NOG NIET REVIEWEN ***\n"
 "\n"
 "Inkomende e-mailberichten ophalen van POP/IMAP servers.\n"
 "=====================================================\n"
@@ -4678,7 +4676,7 @@ msgstr ""
 "\n"
 "Deze module staat u toe om meerdere producten aan te maken vanuit één productieorder.\n"
 "=============================================================================\n"
-"U kan bijproducten configureren in de materiaallijst.\n"
+"U kan bijproducten configureren in de stuklijst.\n"
 "\n"
 "Zonder deze module:\n"
 "--------------------\n"
@@ -7380,8 +7378,10 @@ msgstr "Het is niet mogelijk de instellingen te dupliceren!"
 #. module: base
 #: code:addons/base/ir/ir_model.py:549
 #, python-format
-msgid "Cannot rename field to %s, because that field already exists!"
-msgstr "Kan veldnaam niet wijzigen naar %s want het veld bestaat al!"
+msgid "Cannot rename/delete fields that are still present in views:"
+msgstr ""
+"Het is niet mogelijk om velden te hernoemen of te verwijderen als deze nog "
+"gebruikt worden in weergave:"
 
 #. module: base
 #: code:addons/base/res/res_lang.py:219
@@ -9944,6 +9944,21 @@ msgid "Field `%(field_name)s` does not exist"
 msgstr "Veld '%(field_name)s' bestaat niet"
 
 #. module: base
+#: code:addons/base/ir/ir_model.py:298
+#, python-format
+msgid ""
+"Field names can only contain characters, digits and underscores (up to 63)."
+msgstr ""
+"Veldnamen mogen alleen bestaan uit karakters, getallen en underscores (max. "
+"63)."
+
+#. module: base
+#: code:addons/base/ir/ir_model.py:307
+#, python-format
+msgid "Field names must be unique per model."
+msgstr "Veldnamen moeten uniek zijn per model."
+
+#. module: base
 #: model:ir.actions.act_window,name:base.action_model_fields
 #: model:ir.model,name:base.model_ir_model_fields
 #: model:ir.model.fields,field_description:base.field_ir_model_field_id
@@ -11145,7 +11160,7 @@ msgid ""
 msgstr ""
 "Indien aangevinkt wordt dit veld opgeslagen in vrije ruimte van het reeks "
 "veld in plaats dat het veld een eigen database kolom heeft. Dit kan achteraf"
-" niet worden veranderd."
+" niet worden gewijzigd."
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.view_server_action_form
@@ -11810,7 +11825,7 @@ msgstr "Vacatures, Afdelingen, Werknemers details"
 #. module: base
 #: model:ir.module.module,summary:base.module_hr_recruitment
 msgid "Jobs, Recruitment, Applications, Job Interviews"
-msgstr "Vacatures, Recruitment, Sollicitanten, Sollicitatiegesprekken"
+msgstr "Vacatures, Werving & Selectie, Sollicitanten, Sollicitatiegesprekken"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_wkf_activity_join_mode
@@ -12390,7 +12405,7 @@ msgstr "Code landinstellingen"
 #: model:ir.module.category,name:base.module_category_localization
 #: model:ir.ui.view,arch_db:base.view_users_form
 msgid "Localization"
-msgstr "Positie in magazijn"
+msgstr "Lokalisatie"
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.ir_logging_form_view
@@ -12608,7 +12623,7 @@ msgstr "Productie"
 #. module: base
 #: model:ir.module.module,summary:base.module_mrp
 msgid "Manufacturing Orders, Bill of Materials, Routings"
-msgstr "Productieorder, materiaallijsten, routings"
+msgstr "Productieorder, stuklijsten, routes"
 
 #. module: base
 #: selection:ir.property,type:0
@@ -16787,8 +16802,8 @@ msgid ""
 "preferences of the user and open a new menu to view the changes."
 msgstr ""
 "De installatie van de geselecteerde taal is geslaagd. U moet de "
-"gebruikersvoorkeuren wijzigen en het menu opnieuw openen om de veranderingen"
-" te zien."
+"gebruikersvoorkeuren wijzigen en het menu opnieuw openen om de wijzigingen "
+"te zien."
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.view_base_module_upgrade_install

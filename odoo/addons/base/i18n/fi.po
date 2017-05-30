@@ -10,7 +10,7 @@
 # Miku Laitinen <miku.laitinen@gmail.com>, 2016
 # Veikko Väätäjä <veikko.vaataja@gmail.com>, 2016
 # Kimmo Lehtonen <leban@netzionale.com>, 2016
-# Timo Koukkari <timo.koukkari@seamk.fi>, 2016
+# Timo Koukkari <ti.ko@netikka.fi>, 2016
 # Marko Happonen <marko.happonen@sprintit.fi>, 2016
 # Svante Suominen <svante.suominen@web-veistamo.fi>, 2016
 # Kari Lindgren <karisatu@gmail.com>, 2016
@@ -191,6 +191,8 @@ msgid ""
 "\n"
 "        Bridge between HR and Maintenance."
 msgstr ""
+"\n"
+"Yhteys HR:n ja huoltojen välillä."
 
 #. module: base
 #: model:ir.module.module,description:base.module_pos_data_drinks
@@ -3715,37 +3717,37 @@ msgstr ""
 #. module: base
 #: model:ir.ui.view,arch_db:base.report_irmodeloverview
 msgid "- domain ="
-msgstr ""
+msgstr "- domain ="
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.report_irmodeloverview
 msgid "- field ="
-msgstr ""
+msgstr "- kenttä ="
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.report_irmodeloverview
 msgid "- groups ="
-msgstr ""
+msgstr "- ryhmät ="
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.report_irmodeloverview
 msgid "- ondelete ="
-msgstr ""
+msgstr "- ondelete ="
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.report_irmodeloverview
 msgid "- relation ="
-msgstr ""
+msgstr "- relaatio ="
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.report_irmodeloverview
 msgid "- selection ="
-msgstr ""
+msgstr "- valinta ="
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.report_irmodeloverview
 msgid "- size ="
-msgstr ""
+msgstr "- koko ="
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.module_form
@@ -4387,7 +4389,7 @@ msgstr "Toimet"
 #. module: base
 #: model:ir.module.module,summary:base.module_website_sale_delivery
 msgid "Add Delivery Costs to Online Sales"
-msgstr ""
+msgstr "Lisää toimituskulut verkkomyyntiin"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_act_report_xml_header
@@ -5478,8 +5480,8 @@ msgstr "Konfiguraatiota ei voi monistaa!"
 #. module: base
 #: code:addons/base/ir/ir_model.py:549
 #, python-format
-msgid "Cannot rename field to %s, because that field already exists!"
-msgstr "Ei voi muuttaa kentän nimeä %s, koska se kenttä on jo olemassa!"
+msgid "Cannot rename/delete fields that are still present in views:"
+msgstr ""
 
 #. module: base
 #: code:addons/base/res/res_lang.py:219
@@ -7968,6 +7970,19 @@ msgid "Field `%(field_name)s` does not exist"
 msgstr "Kenttää '%(field_name)s' ei ole olemassa"
 
 #. module: base
+#: code:addons/base/ir/ir_model.py:298
+#, python-format
+msgid ""
+"Field names can only contain characters, digits and underscores (up to 63)."
+msgstr ""
+
+#. module: base
+#: code:addons/base/ir/ir_model.py:307
+#, python-format
+msgid "Field names must be unique per model."
+msgstr ""
+
+#. module: base
 #: model:ir.actions.act_window,name:base.action_model_fields
 #: model:ir.model,name:base.model_ir_model_fields
 #: model:ir.model.fields,field_description:base.field_ir_model_field_id
@@ -8899,7 +8914,7 @@ msgstr ""
 #: model:ir.ui.view,arch_db:base.view_model_fields_form
 #: model:ir.ui.view,arch_db:base.view_model_form
 msgid "How to define a computed field"
-msgstr ""
+msgstr "Kuinka määritellä laskettu kenttä"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_hr_recruitment_survey
@@ -9342,7 +9357,7 @@ msgstr "Intian palkanlaskenta"
 #. module: base
 #: selection:res.partner,company_type:0
 msgid "Individual"
-msgstr "Yksittäinen"
+msgstr "Henkilö"
 
 #. module: base
 #: model:res.country,name:base.id
@@ -11871,7 +11886,7 @@ msgstr "Ylätason valikko"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_ui_menu_parent_left
 msgid "Parent left"
-msgstr ""
+msgstr "Vasen ylätaso"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner_parent_name
@@ -11882,7 +11897,7 @@ msgstr "Ylätason nimi"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_ui_menu_parent_right
 msgid "Parent right"
-msgstr ""
+msgstr "Oikea ylätaso"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_act_report_xml_parser
@@ -11928,7 +11943,7 @@ msgstr "Kumppanit"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_base_geolocalize
 msgid "Partners Geolocation"
-msgstr ""
+msgstr "Kumppanien geolokaatio"
 
 #. module: base
 #: code:addons/base/res/res_partner.py:742
@@ -13137,7 +13152,7 @@ msgstr "Myynnit ja ostot"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_expense
 msgid "Sales Expense"
-msgstr ""
+msgstr "Myyntikulut"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_sales_team
@@ -13254,7 +13269,7 @@ msgstr "Hae moduuleita"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_act_window_search_view
 msgid "Search view"
-msgstr ""
+msgstr "Hakunäkymä"
 
 #. module: base
 #: model:ir.ui.view,arch_db:base.sequence_view
@@ -15873,7 +15888,7 @@ msgstr "Webkit (vanhentunut)"
 #: model:ir.module.category,name:base.module_category_website
 #, python-format
 msgid "Website"
-msgstr "Kotisivu"
+msgstr "Verkkosivu"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_website
@@ -16450,7 +16465,7 @@ msgstr ","
 #. module: base
 #: model:ir.model,name:base.model_base
 msgid "base"
-msgstr ""
+msgstr "base"
 
 #. module: base
 #: model:ir.model,name:base.model_base_language_export
@@ -16970,12 +16985,12 @@ msgstr ""
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_assetsbundle
 msgid "test-assetsbundle"
-msgstr ""
+msgstr "test-assetsbundle"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_pylint
 msgid "test-eval"
-msgstr ""
+msgstr "test-eval"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_test_exceptions

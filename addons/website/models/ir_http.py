@@ -179,8 +179,8 @@ class Http(models.AbstractModel):
                 nearest_lang = not func and cls.get_nearest_lang(path[1])
                 url_lang = nearest_lang and path[1]
                 preferred_lang = ((cook_lang if cook_lang in langs else False)
-                                  or (not is_a_bot and cls.get_nearest_lang(request.lang))
-                                  or request.website.default_lang_code)
+                                  or request.website.default_lang_code
+                                  or (not is_a_bot and cls.get_nearest_lang(request.lang)))
 
                 request.lang = context['lang'] = nearest_lang or preferred_lang
                 # if lang in url but not the displayed or default language --> change or remove
@@ -196,9 +196,9 @@ class Http(models.AbstractModel):
                     if request.lang != request.website.default_lang_code:
                         path.insert(1, request.lang)
                     path = '/'.join(path) or '/'
+                    request.context = context
                     redirect = request.redirect(path + '?' + request.httprequest.query_string)
                     redirect.set_cookie('website_lang', request.lang)
-                    request.context = context
                     return redirect
                 elif url_lang:
                     request.uid = None
@@ -363,6 +363,8 @@ class ModelConverter(ir.ir_http.ModelConverter):
 
     def generate(self, query=None, args=None):
         Model = request.env[self.model]
+        if request.context.get('use_public_user'):
+            Model = Model.sudo(request.website.user_id.id)
         domain = safe_eval(self.domain, (args or {}).copy())
         if query:
             domain.append((Model._rec_name, 'ilike', '%' + query + '%'))
