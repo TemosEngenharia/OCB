@@ -437,7 +437,7 @@ msgstr "Konfiguracja"
 #. module: survey
 #: model:survey.label,value:survey.frow_2_7_2
 msgid "Configuration wizard exists for each important setting"
-msgstr "gratulujemy kreator istnieje dla każdych ważnych ustawień"
+msgstr "Konfiguracyjny kreator istnieje dla każdych ważnych ustawień"
 
 #. module: survey
 #: model:ir.ui.view,arch_db:survey.survey_question_form
@@ -1512,7 +1512,7 @@ msgstr ""
 #. module: survey
 #: model:ir.model.fields,field_description:survey.field_survey_label_value
 msgid "Suggested value"
-msgstr ""
+msgstr "Sugerowana wartość"
 
 #. module: survey
 #: selection:survey.user_input_line,answer_type:0

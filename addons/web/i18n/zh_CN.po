@@ -1108,7 +1108,7 @@ msgstr "图像"
 #: code:addons/web/static/src/xml/base.xml:1093
 #, python-format
 msgid "Import-Compatible Export"
-msgstr "导入兼容导出"
+msgstr "导入兼容"
 
 #. module: web
 #. openerp-web
@@ -1793,7 +1793,7 @@ msgstr "保存字段列表"
 #: code:addons/web/static/src/xml/base.xml:1141
 #, python-format
 msgid "Saved exports:"
-msgstr "已保存的导出结果："
+msgstr "保存的导出："
 
 #. module: web
 #. openerp-web
@@ -2030,7 +2030,7 @@ msgstr "下列字段无效："
 msgid ""
 "The line has been modified, your changes will be discarded. Are you sure you"
 " want to discard the changes ?"
-msgstr "该生产线已被修改，你的更改将被丢弃。你确定要放弃更改？"
+msgstr "明细已被修改，你的更改将被丢弃。你确定要放弃更改？"
 
 #. module: web
 #: code:addons/web/controllers/main.py:718

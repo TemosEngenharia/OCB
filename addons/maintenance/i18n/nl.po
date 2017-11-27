@@ -301,6 +301,8 @@ msgid ""
 "Date the maintenance team plans the maintenance.  It should not differ much "
 "from the Request Date. "
 msgstr ""
+"De datum waarop het onderhoudsteam het onderhoud plant. Het zou niet veel "
+"moeten afwijken van de gevraagde datum"
 
 #. module: maintenance
 #: model:ir.model.fields,help:maintenance.field_maintenance_request_close_date
@@ -398,7 +400,7 @@ msgstr "Categorie apparatuur "
 #. module: maintenance
 #: model:ir.model.fields,field_description:maintenance.field_maintenance_equipment_category_id_3424
 msgid "Equipment Category"
-msgstr "Categorie apparatuur "
+msgstr "Apparatuur categorie "
 
 #. module: maintenance
 #: model:res.groups,name:maintenance.group_equipment_manager

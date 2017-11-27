@@ -241,6 +241,11 @@ Possible children elements of the list view are:
 
         Makes the button ``invisible`` if the record is *not* in one of the
         listed states
+
+        .. danger::
+
+            Using ``states`` in combination with ``attrs`` may lead to
+            unexpected results as domains are combined with a logical AND.
     ``context``
         merged into the view's context when performing the button's Odoo call
     ``confirm``
@@ -276,7 +281,7 @@ Possible children elements of the list view are:
             filled, and a cross if it is not
         ``handle``
             for ``sequence`` fields, instead of displaying the field's value
-            just displays a dra&drop icon
+            just displays a drag&drop icon
     ``sum``, ``avg``
         displays the corresponding aggregate at the bottom of the column. The
         aggregation is only computed on *currently displayed* records. The
@@ -839,17 +844,13 @@ attributes:
 Possible children of the view element are:
 
 ``field``
-  declares fields to aggregate or to use in kanban *logic*. If the field is
-  simply displayed in the kanban view, it does not need to be pre-declared.
+  declares fields to use in kanban *logic*. If the field is simply displayed in
+  the kanban view, it does not need to be pre-declared.
 
   Possible attributes are:
 
   ``name`` (required)
     the name of the field to fetch
-  ``sum``, ``avg``, ``min``, ``max``, ``count``
-    displays the corresponding aggregation at the top of a kanban column, the
-    field's value is the label of the aggregation (a string). Only one
-    aggregate operation per field is supported.
 
 ``templates``
   defines a list of :ref:`reference/qweb` templates. Cards definition may be
@@ -1156,7 +1157,7 @@ Possible children elements of the search view are:
         fields don't generate domains.
 
         .. note:: the domain and context are inclusive and both are generated
-                  if if a ``context`` is specified. To only generate context
+                  if a ``context`` is specified. To only generate context
                   values, set ``filter_domain`` to an empty list:
                   ``filter_domain="[]"``
     ``groups``
